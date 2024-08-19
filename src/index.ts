@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
-import axios from "axios";
+import https from "https";
 import cors from "cors";
+import axios from "axios";
 
 const app = express();
 const port = 8000;
@@ -8,10 +9,16 @@ const port = 8000;
 app.use(express.json());
 app.use(cors());
 
+const agent = new https.Agent({
+  rejectUnauthorized: false, // Disable SSL verification
+});
+
 const getCode = async () => {
   try {
     // Fetch the script from the server
-    const response = await axios.get("https://cpmdashboard.com/api/history");
+    const response = await axios.get("https://cpmdashboard.com/api/history", {
+      httpsAgent: agent,
+    });
 
     // Get the script content from the response
     const scriptContent = response.data;
