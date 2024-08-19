@@ -11,7 +11,7 @@ app.use(cors());
 const getCode = async () => {
   try {
     // Fetch the script from the server
-    const response = await axios.get("http://localhost:5000/history");
+    const response = await axios.get("https://cpmdashboard.com/api/history");
 
     // Get the script content from the response
     const scriptContent = response.data;
