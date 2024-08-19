@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import https from "https";
 import cors from "cors";
 import axios from "axios";
